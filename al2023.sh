@@ -50,17 +50,18 @@ newgrp docker
 ################################################################################
 
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh -b -p ~/miniforge3
+bash Miniforge3-$(uname)-$(uname -m).sh -b
 source ~/miniforge3/etc/profile.d/conda.sh
 source ~/miniforge3/etc/profile.d/mamba.sh
 conda install argcomplete
 echo 'eval "$(register-python-argcomplete conda)"' >> .bashrc
 
-conda env create -f ./env-lst.yml
-
 ################################################################################
 # Spack                                                                        #
 ################################################################################
+
+git clone --depth=2 --branch=releases/v0.23 https://github.com/spack/spack.git ~/spack
+. ~/spack/share/spack/setup-env.sh
 
 ################################################################################
 #                                                                     #

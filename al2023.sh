@@ -63,6 +63,23 @@ echo 'eval "$(register-python-argcomplete conda)"' >> .bashrc
 git clone --depth=2 --branch=releases/v0.23 https://github.com/spack/spack.git ~/spack
 . ~/spack/share/spack/setup-env.sh
 
+# Add Spack Cache
+spack mirror add v0.23.1 https://binaries.spack.io/v0.23.1
+spack buildcache keys --install --trust
+
+# Add OCI Cache
+# OCI_USERNAME
+# OCI_PAT
+
+# REGISTRY_NAME
+# REGISTRY_URL
+# OCI_USERNAME
+# OCI_PAT
+spack mirror add \
+      --oci-username-variable OCI_USERNAME \
+      --oci-password-variable OCI_PAT \
+      "${REGISTRY_NAME}" oci://"${REGISTRY_URL}"
+
 ################################################################################
 #                                                                     #
 ################################################################################
